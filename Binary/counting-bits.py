@@ -25,18 +25,40 @@ Explanation:
 
 # Approach:
 # Count the no of set bits in each number from 0 to n and store the set bits count for each number in the array and return the array.
-n = 6 
+# n = 6 
+# def countingSetBits(n):
+#     ans = []
+#     for i in range(0, n+1):
+#         num = i
+#         cnt = 0
+#         while num > 0:
+#             if num & 1:
+#                 cnt += 1
+#             num = num >> 1
+#         ans.append(cnt)
+#     return ans
+
+# ans = countingSetBits(n)
+# print("=============== ans :", ans)
+
+#Optimal approach :
+n = 6
+
 def countingSetBits(n):
-    ans = []
+    ans = [0]*(n+1)
+    if n == 0:
+        return [0]
+    if n == 1:
+        return [0, 1]
+    ans[0] = 0
+    ans[1] = 1
     for i in range(0, n+1):
-        num = i
-        cnt = 0
-        while num > 0:
-            if num & 1:
-                cnt += 1
-            num = num >> 1
-        ans.append(cnt)
+        if i & 1:
+            ans[i] = ans[i//2] + 1
+        else:
+            ans[i] = ans[i//2]
     return ans
 
+
 ans = countingSetBits(n)
-print("=============== ans :", ans)
+print("----------------- ans :", ans)
