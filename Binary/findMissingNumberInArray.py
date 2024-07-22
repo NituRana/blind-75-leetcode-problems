@@ -42,21 +42,38 @@ In the given array, number 2 is missing. So, 2 is the answer.
 # print("The missing number is:", ans)
 
 
-#1. Better Approach
+#2. Better Approach
+# def missingNumber(a, N):
+#     hash = [0] * (N + 1)
+
+#     for i in range(N - 1):
+#         hash[a[i]] += 1
+
+
+#     for i in range(1, N + 1):
+#         if hash[i] == 0:
+#             return i
+
+#     return -1
+
+# N = 9
+# a = [1, 2, 3, 4, 5, 6, 8, 9,]
+# ans = missingNumber(a, N)
+# print("-------The missing number is:", ans)
+
+
+#optimal approach
+
+
 def missingNumber(a, N):
-    hash = [0] * (N + 1)
+    sum_of_natural_num = (N * (N + 1)) // 2
+    s2 = sum(a)
 
-    for i in range(N - 1):
-        hash[a[i]] += 1
+    missing_num = sum_of_natural_num - s2
+    return missing_num
 
 
-    for i in range(1, N + 1):
-        if hash[i] == 0:
-            return i
-
-    return -1
-
-N = 9
-a = [1, 2, 3, 4, 5, 6, 8, 9,]
-ans = missingNumber(a, N)
-print("-------The missing number is:", ans)
+n = 5
+arr = [1, 2, 4, 5]
+ans = missingNumber(arr, n)
+print("The missing number is:", ans)
